@@ -19,8 +19,5 @@ RUN apt-get update && apt-get install -y g++
 # Copy the Django project files to the working directory
 COPY . .
 
-# Expose the port on which Django runs
-EXPOSE 8000
-
-# Run Django's development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Run Django's migration and then the development server
+CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
