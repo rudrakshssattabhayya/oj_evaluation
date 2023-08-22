@@ -21,3 +21,6 @@ COPY . .
 
 # Run Django's migration and then the development server
 CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+
+#Running the follwing cmd to ensure security and limiting the resources of container
+#docker run --cpus=0.5 --memory=512m --read-only oj_evaluation_server
