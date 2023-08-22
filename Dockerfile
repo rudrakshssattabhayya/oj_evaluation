@@ -19,5 +19,9 @@ RUN apt-get update && apt-get install -y g++
 # Copy the Django project files to the working directory
 COPY . .
 
-# Run Django's migration and then the development server
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+# Copy the entrypoint script to the container
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint to run the script
+ENTRYPOINT ["/entrypoint.sh"]
