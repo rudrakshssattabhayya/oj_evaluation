@@ -131,4 +131,8 @@ class GetTheVerdict(APIView):
         os.remove(executableFilePath)
         codeModalObj.delete()
 
-        return JsonResponse({"verdict":verdict, "status": status.HTTP_200_OK})      
+        return JsonResponse({"verdict":verdict, "status": status.HTTP_200_OK})    
+
+class Heartbeat(APIView):
+    def get(self, request):
+        return JsonResponse({"status": status.HTTP_200_OK})  
